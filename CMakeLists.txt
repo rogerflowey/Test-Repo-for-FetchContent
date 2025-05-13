@@ -13,11 +13,13 @@ include(FetchContent)
 set(FETCHCONTENT_BASE_DIR ${CMAKE_BINARY_DIR}/_deps)
 
 FetchContent_Declare(
-        liburing_project # A unique name for this declaration
+        liburing_project
         GIT_REPOSITORY https://github.com/axboe/liburing.git
-        GIT_TAG        liburing-2.6 # Use a specific stable tag or commit hash
-        # GIT_SHALLOW    TRUE      # Optional: for faster downloads, only gets latest commit of the tag
-        # GIT_PROGRESS   TRUE      # Optional: show git clone progress
+        GIT_TAG        liburing-2.6
+        # Add this GIT_CONFIG line:
+        GIT_CONFIG     "url.https://github.com/.insteadOf=" # Prevent https://github.com/ from being rewritten
+        # GIT_SHALLOW    TRUE
+        # GIT_PROGRESS   TRUE
 )
 
 # This will download and make liburing's targets available
